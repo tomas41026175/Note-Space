@@ -1,5 +1,3 @@
-# 代數效應 & Fiber(纖程)
-###### tags: `React`
 -  代數效應: 讓code可以跳過中間的狀態先處裡後面的工作，再回到前面處裡原本的階段。
 ## React Fiber
 - Fiber並不是計算機術語中的新名詞，他的中文翻譯叫做纖程，與進程（Process）、線程（Thread）、協程（Coroutine）同為程序執行過程。

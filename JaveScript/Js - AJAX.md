@@ -1,5 +1,3 @@
-# JavaScript-AJAX
-###### tags: `JavaScript`
 ## AJAX(Asynchronous JavaScript and XML)
 意思為非同步的 JavaScript 與 XML 技術，在技術層面上來說是一項讓網頁不用重新整理就可以從伺服器取得資料的方式。
 使用AJAX後，常見的伺服器回傳資料為（HTML、XML、JSON），其中在使用JavaScript時最常見到的格式為JSON。
