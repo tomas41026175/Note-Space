@@ -66,3 +66,6 @@ console.log(state); // 後續渲染: ['Rudi', 'Yardley']
 
 console.log(state); //點擊完結果: ['Fred', 'Yardley']
 ```
+
+- React hooks: not magic, just arrays
+- https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e

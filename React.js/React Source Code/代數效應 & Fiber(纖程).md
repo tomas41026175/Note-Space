@@ -75,4 +75,3 @@ function FiberNode(
 
 - Reference
     - https://react.iamkasong.com/process/fiber.html#fiber%E7%9A%84%E7%BB%93%E6%9E%84
-
