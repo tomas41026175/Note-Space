@@ -60,6 +60,17 @@ function FiberNode(
 }
 ```
 
+- 從上面的程式碼，我們可以看到 useState 的歷程
+
+  1. 初始化： 兩個空陣列分別儲存 setters 和 state，設置指標 (cursor) 值為 0
+
+  2. 首次渲染： 遍歷所有的 useState，並將 setters 放到 setters 的陣列當中，將 state 放進 state 的陣列當中
+
+  3. 重新渲染： 每次重新渲染都會重置指標值為 0，並依次從陣列中取出之前的 state，因為先前在存放 setters 與 state 是依序放入的，因此只要這個順序沒變，就可以確保重新渲染後，是拿到對的 setters 與 state。
+
+  4. 事件觸發： 每個 setter 都有對應指標的 state 值 ，因此只要有事件觸發調用到任何 setter ，都會修改到此 setter 到應到 state 陣列中的值。因此只要順序沒有變，就會改到對的值。
+
+上方程式碼的例子可以看到，React 背後透過指標值來記錄對應的 state 和 setter，但如果今天我們沒有遵照 React 規範編寫 Hook 而導致 Hook 調用順序錯誤，顯而易見的，指標值也會錯誤，在這種情況下，我們得到的 state 值或 set 的 state 值也會錯誤，這就會造成 Bug 的產生。
 
 
 - Reference
