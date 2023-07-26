@@ -31,3 +31,4 @@
   - 完整滑動屬性scroll snap
     - https://www.gushiciku.cn/pl/grR1/zh-tw
   - https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/
+  - https://pjchender.dev/css/css-scroll-snap/
