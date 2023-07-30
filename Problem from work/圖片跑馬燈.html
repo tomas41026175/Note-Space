@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .box {
+                position: relative;
+                width: 100%;
+                height: 56vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+
+                @media (max-width: 576px) {
+                    height: 45vh;
+                }
+            }
+
+            .list {
+                height: 100%;
+                display: flex;
+                position: relative;
+            }
+
+            .photo {
+                width: 100vw;
+                height: 100%;
+
+                a {
+                    padding: 0;
+                    height: 100%;
+                    object-fit: cover;
+                    &::after {
+                        content: none;
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="list">
+                <div class="photo">
+                    <a href="#">
+                        <img src="./front/cht/base/images/banner1.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="#">
+                        <img src="./front/cht/base/images/banner2.png" alt="" loading="lazy" />
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="#">
+                        <img src="./front/cht/base/images/banner.jpg" alt="" loading="lazy" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+ document.addEventListener('DOMContentLoaded', function () {
+    const list = document.querySelector('.list');
+    const photos = document.querySelectorAll('.photo');
+    const photoWidth = photos[0].offsetWidth;
+    const totalPhotos = photos.length;
+    const speed = 2; // 设置持续移动的速度，单位为像素/帧
+
+    // 复制前两个幻灯片并放到末尾
+    for (let i = 0; i < 2; i++) {
+      list.appendChild(photos[i].cloneNode(true));
+    }
+
+    let left = 0;
+    let currentIndex = 0;
+
+    function continuousMove() {
+      left -= speed; // 计算新的left值
+
+      // 判断是否滚动到了一个幻灯片的宽度，如果滚动到了，将第一个幻灯片重新放回到列表末尾，实现循环滚动
+      if (left <= -photoWidth) {
+        left = 0;
+
+        // 将当前索引对应的幻灯片移除，并将其添加到列表末尾
+        list.appendChild(photos[currentIndex]);
+        currentIndex++;
+
+        // 如果当前索引超过了总幻灯片数，重置索引为0
+        if (currentIndex >= totalPhotos) {
+          currentIndex = 0;
+        }
+      }
+
+      // 设置滑动列表的left值，实现持续移动
+      list.style.left = left + 'px';
+
+      // 请求下一帧动画
+      requestAnimationFrame(continuousMove);
+    }
+
+    continuousMove();
+  });
+    </script>
+</html>
